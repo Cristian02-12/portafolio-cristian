@@ -1,1 +1,28 @@
-<p>header works!</p>
+<header class="custom-header" [class.scrolled]="isScrolled" [class.mobile-open]="isMobileMenuOpen">
+  
+  <!-- Icono Home (Siempre visible) -->
+  <div class="home-container" (click)="scrollTo('home')">
+    <i class="bi bi-house-door-fill" [class.active]="activeSection === 'home'"></i>
+  </div>
+
+  <!-- Línea Separadora -->
+  <div class="separator"></div>
+
+  <!-- Menú de Secciones Dinámicas -->
+  <nav class="nav-links" [class.open]="isMobileMenuOpen">
+    <div *ngFor="let item of menuItems" 
+         class="nav-item" 
+         [class.active]="activeSection === item.id"
+         (click)="scrollTo(item.id)">
+      <i [class]="item.icon"></i>
+      <span>{{ item.label }}</span>
+      <div class="underline"></div>
+    </div>
+  </nav>
+
+  <!-- Botón Hamburguesa (Solo Móvil) -->
+  <button class="hamburger" (click)="toggleMobileMenu()">
+    <i class="bi" [class.bi-list]="!isMobileMenuOpen" [class.bi-x-lg]="isMobileMenuOpen"></i>
+  </button>
+  
+</header>

@@ -1,1 +1,19 @@
-<p>home works!</p>
+<section id="home" class="home-section" (mousemove)="onMouseMove($event)">
+  
+  <!-- Efecto de luz dinámica de fondo -->
+  <div class="cursor-glow" [style.left.px]="mouseX" [style.top.px]="mouseY"></div>
+
+  <div class="home-content">
+    <h1 class="main-title">CRISTIAN OLANO</h1>
+    <h2 class="main-subtitle">
+      {{ currentText }}<span class="typing-cursor">|</span>
+    </h2>
+  </div>
+
+  <!-- Indicador Scroll Down -->
+  <div class="scroll-down" (click)="scrollTo('acerca-de')">
+    <span>Scroll Down</span>
+    <i class="bi bi-mouse"></i>
+  </div>
+
+</section>

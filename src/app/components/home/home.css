@@ -1,0 +1,85 @@
+/* STREAMING_CHUNK:Estilizando los textos gigantes y animaciones del Home... */
+.home-section {
+position: relative;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+
+/* Efecto linterna */
+.cursor-glow {
+position: absolute;
+width: 600px;
+height: 600px;
+background: radial-gradient(circle, rgba(55, 216, 124, 0.08) 0%, rgba(0,0,0,0) 60%);
+border-radius: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none; /* Crucial para no tapar clics */
+transition: top 0.1s ease-out, left 0.1s ease-out;
+z-index: 1;
+}
+
+.home-content {
+text-align: center;
+z-index: 10;
+}
+
+.main-title {
+font-size: 8rem;
+font-weight: 900;
+letter-spacing: 2px;
+margin-bottom: 10px;
+color: #fff;
+transition: all 0.3s ease;
+cursor: default;
+}
+
+.main-title:hover {
+text-shadow: 0 0 20px rgba(55, 216, 124, 0.5);
+transform: scale(1.02);
+}
+
+.main-subtitle {
+font-size: 4rem;
+font-weight: 400;
+color: #ccc;
+min-height: 40px; /* Evita saltos cuando la línea está vacía */
+}
+
+.typing-cursor {
+color: var(--accent-color);
+animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.scroll-down {
+position: absolute;
+bottom: 30px; /* Suficiente espacio en móvil */
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+flex-direction: column;
+align-items: center;
+color: var(--accent-color);
+cursor: pointer;
+z-index: 10;
+animation: bounce 2s infinite;
+}
+
+.scroll-down i { font-size: 1.8rem; margin-bottom: 5px; }
+.scroll-down span { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+40% { transform: translateY(-15px) translateX(-50%); }
+60% { transform: translateY(-7px) translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+.main-title { font-size: 3.5rem; }
+.main-subtitle { font-size: 1rem; }
+.scroll-down { bottom: 120px; }
+}

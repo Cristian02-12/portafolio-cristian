@@ -1,1 +1,65 @@
-<p>acerca-de works!</p>
+<section id="acerca-de" class="acerca-section">
+  <div class="acerca-container">
+    
+    <!-- LADO IZQUIERDO: Contenedor de la Imagen -->
+    <div class="acerca-image-wrapper">
+      <img src="images/foto-perfil.jpg" alt="Foto de Cristian" class="profile-image">
+    </div>
+
+    <!-- LADO DERECHO: Contenido de texto y Trayectoria -->
+    <div class="acerca-content-wrapper">
+      
+      <!-- Bloque de Información -->
+      <div class="info-block">
+        <h4 class="section-label">ACERCA DE</h4>
+        <h2 class="main-heading">
+          Desarrollador enfocado en soluciones. No solo escribo código: diseño sistemas que optimizan procesos reales.
+        </h2>
+        
+        <div class="about-text">
+          <p>
+            Soy estudiante de 8° ciclo de Ingeniería de Sistemas e Informática con una visión clara: la tecnología debe servir para resolver problemas del mundo real. Mi experiencia en el desarrollo de sistemas para empresas locales como CSI Contratistas y la Parroquia San Agustín me ha permitido dominar el ciclo de vida del software, desde el frontend dinámico hasta un backend robusto.
+          </p>
+          <p>
+            Creo que la eficiencia nace de la planificación. Antes de tocar una sola línea de código, analizo el impacto y la necesidad del usuario final. Mi paso por empresas del grupo Intercorp me ha brindado una capacidad de adaptación y comunicación que pocos desarrolladores tienen: entiendo el negocio y entiendo el código.
+          </p>
+          <p>
+            Tecnologías con las que construyo: Java, Node.js, Angular, Spring Boot, JavaScript y SQL Server. La conectividad es clave, por lo que cuento con certificaciones CCNA para asegurar infraestructuras de red sólidas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Línea Divisora -->
+      <hr class="custom-divider">
+
+      <!-- Bloque de Trayectoria (Línea de Tiempo) -->
+      <div class="trayectoria-block">
+        <h4 class="section-label">TRAYECTORIA</h4>
+        
+        <!-- Contenedor con Scroll para la línea de tiempo -->
+        <div class="timeline-scroll-container">
+          <div class="timeline">
+            
+            <!-- Iteración dinámica de la trayectoria -->
+            <div class="timeline-item" *ngFor="let item of trayectoriaItems">
+              <div class="timeline-dot"></div>
+              
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <h5 class="timeline-title">
+                    <span class="highlight">{{ item.estado }}</span> — {{ item.titulo }}
+                  </h5>
+                  <span class="timeline-date">{{ item.fecha }}</span>
+                </div>
+                <p class="timeline-desc">{{ item.descripcion }}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

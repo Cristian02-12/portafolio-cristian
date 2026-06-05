@@ -1,0 +1,12 @@
+/* STREAMING_CHUNK:Ajustando las secciones vacías temporales... */
+.placeholder-section {
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+/* Borde eliminado para que sea un solo lienzo negro continuo */
+background-color: #000000;
+font-size: 3rem;
+font-weight: 900;
+color: #111; /* Texto casi negro solo para saber dónde están mientras desarrollamos */
+}

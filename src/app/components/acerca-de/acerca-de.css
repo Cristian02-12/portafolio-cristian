@@ -1,0 +1,254 @@
+/* STREAMING_CHUNK:Aplicando Layout Grid, Scrollbars customizadas y animaciones Hover */
+.acerca-section {
+min-height: 100vh;
+background-color: #000000;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 100px 5%;
+}
+
+.acerca-container {
+max-width: 1300px;
+width: 100%;
+display: grid;
+grid-template-columns: 1fr 1.2fr; /* Columna derecha un poco más ancha */
+gap: 60px;
+align-items: stretch; /* Iguala las alturas de ambas columnas */
+}
+
+/* ==========================
+LADO IZQUIERDO: Imagen
+========================== */
+.acerca-image-wrapper {
+width: 100%;
+border-radius: 24px;
+overflow: hidden;
+background-color: #111111; /* Color temporal de fondo */
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 500px;
+box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.image-placeholder {
+display: flex;
+flex-direction: column;
+align-items: center;
+color: #333;
+}
+
+.image-placeholder i {
+font-size: 5rem;
+margin-bottom: 10px;
+}
+
+/* Cuando coloques tu etiqueta img, se aplicará esto: */
+.profile-image {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.5s ease;
+}
+
+.acerca-image-wrapper:hover .profile-image {
+transform: scale(1.03);
+}
+
+/* ==========================
+LADO DERECHO: Contenido
+========================== */
+.acerca-content-wrapper {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.section-label {
+color: #37D87C;
+font-size: 1rem;
+font-weight: 800;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+margin-bottom: 20px;
+}
+
+.main-heading {
+color: #ffffff;
+font-size: 2.2rem;
+font-weight: 900;
+line-height: 1.2;
+margin-bottom: 30px;
+}
+
+.about-text p {
+color: #D9D9D9;
+font-size: 0.95rem;
+line-height: 1.8;
+margin-bottom: 20px;
+}
+
+.custom-divider {
+border: none;
+height: 1px;
+background-color: rgb(255, 255, 255);
+margin: 40px 0;
+}
+
+/* ==========================
+LÍNEA DE TIEMPO (TRAYECTORIA)
+========================== */
+.timeline-scroll-container {
+/* Controla la altura máxima para habilitar el scroll */
+max-height: 400px;
+overflow-y: auto;
+padding-right: 15px;
+}
+
+/* Personalización del Scrollbar interno de la trayectoria */
+.timeline-scroll-container::-webkit-scrollbar {
+width: 6px;
+}
+.timeline-scroll-container::-webkit-scrollbar-track {
+background: rgba(255,255,255,0.05);
+border-radius: 10px;
+}
+.timeline-scroll-container::-webkit-scrollbar-thumb {
+background: #333;
+border-radius: 10px;
+}
+.timeline-scroll-container::-webkit-scrollbar-thumb:hover {
+background: #37D87C;
+}
+
+.timeline {
+position: relative;
+padding-left: 20px;
+}
+
+/* La línea vertical base */
+.timeline::before {
+content: '';
+position: absolute;
+top: 0;
+bottom: 0;
+left: 3px;
+width: 2px;
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item {
+position: relative;
+margin-bottom: 35px;
+padding-left: 30px;
+transition: all 0.3s ease;
+cursor: default;
+}
+
+.timeline-item:last-child {
+margin-bottom: 0;
+}
+
+/* El punto de la línea de tiempo */
+.timeline-dot {
+position: absolute;
+top: 5px;
+left: -19px;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background-color: #666;
+border: 2px solid #000;
+transition: all 0.3s ease;
+z-index: 2;
+}
+
+.timeline-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 8px;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+.timeline-title {
+color: #aaaaaa;
+font-size: 1rem;
+font-weight: 500;
+margin: 0;
+transition: color 0.3s ease;
+}
+
+.timeline-title .highlight {
+color: #ffffff;
+font-weight: 700;
+transition: color 0.3s ease;
+}
+
+.timeline-date {
+color: #666666;
+font-size: 0.85rem;
+font-family: monospace;
+}
+
+.timeline-desc {
+color: #888888;
+font-size: 0.85rem;
+line-height: 1.6;
+margin: 0;
+transition: color 0.3s ease;
+}
+
+/* ==========================
+Efectos HOVER en Trayectoria
+========================== */
+.timeline-item:hover {
+transform: translateX(5px);
+}
+
+.timeline-item:hover .timeline-dot {
+background-color: #0D68E2;
+box-shadow: 0 0 10px #0D68E2;
+}
+
+.timeline-item:hover .timeline-title .highlight,
+.timeline-item:hover .timeline-title {
+color: #37D87C;
+}
+
+.timeline-item:hover .timeline-desc {
+color: #D9D9D9;
+}
+
+/* ==========================
+Responsive Design
+========================== */
+@media (max-width: 992px) {
+.acerca-container {
+grid-template-columns: 1fr;
+gap: 40px;
+}
+
+.acerca-image-wrapper {
+min-height: 400px;
+height: 400px; /* Fija altura en móvil */
+}
+
+.main-heading {
+font-size: 1.8rem;
+}
+}
+
+@media (max-width: 768px) {
+.acerca-section {
+padding: 80px 5% 120px 5%; /* Más padding abajo por el header móvil */
+}
+
+.timeline-header {
+flex-direction: column;
+gap: 5px;
+}
+}
