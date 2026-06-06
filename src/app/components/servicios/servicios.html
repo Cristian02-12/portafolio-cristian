@@ -1,1 +1,47 @@
-<p>servicios works!</p>
+<section id="servicios" class="servicios-section">
+  <div class="servicios-container">
+    
+    <!-- Parte Izquierda / Superior: Encabezado -->
+    <div class="servicios-header">
+      <h4 class="servicios-label">SERVICIOS</h4>
+      <h2 class="servicios-title">
+        Soluciones con <span class="highlight">impacto real</span>
+      </h2>
+      <p class="servicios-desc">
+        Desde el diseño de la infraestructura hasta la última línea de código en el frontend, ayudo a empresas a escalar mediante tecnología moderna y procesos optimizados.
+      </p>
+    </div>
+
+    <!-- Parte Derecha / Inferior: Cuadros de Servicios -->
+    <div class="servicios-grid">
+      
+      <!-- Cuadro Principal (Iterado dinámicamente) -->
+      <div class="servicio-card" *ngFor="let servicio of servicios">
+        
+        <!-- Sombreado radial oculto que aparece en hover -->
+        <div class="card-glow"></div>
+        
+        <div class="card-header">
+          <!-- Cuadro pequeño con el icono -->
+          <div class="icon-box">
+            <i [class]="servicio.icono"></i>
+          </div>
+          <!-- Número de orden -->
+          <div class="number-box">{{ servicio.numero }}</div>
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">{{ servicio.titulo }}</h3>
+          <p class="card-text">{{ servicio.descripcion }}</p>
+          
+          <!-- Cuadros pequeños de herramientas -->
+          <div class="card-tags">
+            <span class="tag" *ngFor="let tag of servicio.tags">{{ tag }}</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

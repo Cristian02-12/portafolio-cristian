@@ -1,0 +1,213 @@
+/* --- CONTENEDOR GENERAL --- */
+.servicios-section {
+  background-color: #000000;
+  padding: 100px 5%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.servicios-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* --- ENCABEZADO --- */
+.servicios-header {
+  max-width: 800px;
+}
+
+.servicios-label {
+  color: #37D87C;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.servicios-title {
+  color: #FFFFFF;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.servicios-title .highlight {
+  color: #37D87C;
+}
+
+.servicios-desc {
+  color: #D9D9D9;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+/* --- GRID DE CUADROS --- */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* --- CUADRO PRINCIPAL (TARJETA) --- */
+.servicio-card {
+  background-color: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Sombreado Radial (Color 37D87C al 47%) */
+.card-glow {
+  position: absolute;
+  top: -25px;
+  right: -38px;
+  width: 170px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(55, 216, 124, 0.47) 0%, rgba(0, 0, 0, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- CABECERA DE LA TARJETA --- */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.icon-box {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+}
+
+.icon-box i {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  transition: color 0.4s ease;
+}
+
+.number-box {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 2.5rem;
+  font-weight: 800;
+  transition: color 0.4s ease;
+}
+
+/* --- CUERPO DE LA TARJETA --- */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  transition: color 0.4s ease;
+}
+
+.card-text {
+  color: #D9D9D9;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+/* --- CUADROS PEQUEÑOS (HERRAMIENTAS) --- */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #D9D9D9;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s ease;
+}
+
+/* --- ANIMACIONES HOVER --- */
+.servicio-card:hover {
+  border-color: #37D87C;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(55, 216, 124, 0.1);
+}
+
+.servicio-card:hover .card-glow {
+  opacity: 1; /* Aparece el sombreado radial en el número */
+}
+
+.servicio-card:hover .icon-box i {
+  color: #37D87C; /* Icono cambia de color */
+}
+
+.servicio-card:hover .icon-box {
+  border-color: rgba(55, 216, 124, 0.3);
+}
+
+.servicio-card:hover .number-box {
+  color: #FFFFFF; /* El número se ilumina para resaltar sobre el glow verde */
+}
+
+.servicio-card:hover .card-title {
+  color: #37D87C; /* Titulo cambia de color */
+}
+
+.servicio-card:hover .tag {
+  border-color: rgba(55, 216, 124, 0.5);
+  color: #FFFFFF;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .servicios-title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicios-grid {
+    grid-template-columns: 1fr;
+  }
+  .servicios-title {
+    font-size: 2.2rem;
+  }
+  .servicios-section {
+    padding: 80px 5%;
+  }
+}
