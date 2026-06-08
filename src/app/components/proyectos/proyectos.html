@@ -1,1 +1,62 @@
-<p>proyectos works!</p>
+<section id="proyectos" class="proyectos-section">
+  <div class="proyectos-container">
+    
+    <!-- Encabezado de la Sección -->
+    <div class="proyectos-header">
+      <h4 class="proyectos-label">PROYECTOS DESTACADOS</h4>
+      <h2 class="proyectos-title">
+        Cada línea de código <span class="highlight">resuelve un problema real.</span>
+      </h2>
+    </div>
+
+    <!-- Contenedor con Scroll Interno -->
+    <div class="proyectos-scroll-area">
+      <div class="proyectos-grid">
+        
+        <!-- Tarjeta del Proyecto -->
+        <!-- Aplicamos la clase dinámica para variar los tamaños -->
+        <div class="proyecto-card" *ngFor="let p of proyectos" [ngClass]="p.sizeClass">
+          
+          <!-- Imagen de Previsualización -->
+          <div class="card-img-wrapper">
+            <img [src]="p.img" [alt]="p.titulo" class="card-img">
+            <div class="img-overlay"></div>
+          </div>
+
+          <!-- Información del Proyecto -->
+          <div class="card-content">
+            
+            <!-- Fila Superior: Títulos (Izquierda) y Botón (Derecha) -->
+            <div class="card-top-row">
+              <div class="titles-wrapper">
+                <h3 class="card-title">{{ p.titulo }}</h3>
+                <h5 class="card-subtitle">{{ p.subtitulo }}</h5>
+              </div>
+              
+              <button class="arrow-btn" aria-label="Ver detalles">
+                <i class="bi bi-arrow-up-right"></i>
+              </button>
+            </div>
+            
+            <!-- Texto Descriptivo -->
+            <p class="card-desc">{{ p.descripcion }}</p>
+
+            <!-- Línea Separadora -->
+            <hr class="card-divider">
+
+            <!-- Fila Inferior: Herramientas (Izquierda) y Fecha (Derecha) -->
+            <div class="card-bottom-row">
+              <div class="tags-container">
+                <span class="tech-tag" *ngFor="let tech of p.tech">{{ tech }}</span>
+              </div>
+              <span class="card-year">{{ p.year }}</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

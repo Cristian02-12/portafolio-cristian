@@ -1,1 +1,131 @@
-<p>contacto works!</p>
+<section id="contacto" class="contacto-section">
+  <div class="contacto-container">
+    
+    <!-- PARTE IZQUIERDA (Info y Selección) -->
+    <div class="contacto-left">
+      <h4 class="contacto-label">CONTACTO</h4>
+      
+      <h2 class="contacto-title">
+        Cuéntame sobre tu proyecto,<br>
+        <span class="highlight">yo me encargo del código.</span>
+      </h2>
+      
+      <p class="contacto-desc">
+        Ya sea que necesites un sistema web completo, optimizar tu base de datos o configurar una red corporativa, estoy aquí para ayudarte.
+      </p>
+
+      <!-- Cuadro de Estado (Disponibilidad) -->
+      <div class="status-box" [class.available]="isAvailable">
+        <span class="status-dot"></span>
+        <span class="status-text">
+          Actualmente <strong class="highlight-text">disponible para nuevos proyectos</strong>.
+        </span>
+      </div>
+
+      <!-- Cuadros Selectores de Contacto -->
+      <div class="contact-options">
+        
+        <!-- Opción Email (Actualizada con tu correo real) -->
+        <div class="option-card" 
+             [class.active]="metodoContacto === 'email'"
+             (click)="setContactMethod('email')">
+          <i class="bi bi-envelope-at-fill option-icon"></i>
+          <div class="option-info">
+            <span class="option-title">CORREO ELECTRÓNICO</span>
+            <!-- Se trunca con CSS si es muy largo, pero aquí mostramos una versión visible -->
+            <span class="option-detail" style="font-size: 0.75rem;">cristianelinsonolanorodriquez@gmail.com</span>
+          </div>
+        </div>
+
+        <!-- Opción WhatsApp (Actualizada con tu número real) -->
+        <div class="option-card" 
+             [class.active]="metodoContacto === 'phone'"
+             (click)="setContactMethod('phone')">
+          <i class="bi bi-whatsapp option-icon"></i>
+          <div class="option-info">
+            <span class="option-title">TELÉFONO / WHATSAPP</span>
+            <span class="option-detail">+51 960 587 536</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PARTE DERECHA (Formulario Dinámico) -->
+    <div class="contacto-right">
+      
+      <div class="form-container">
+        
+        <!-- Estado de Redirección/Éxito -->
+        <div class="success-state fade-in" *ngIf="showSuccess">
+          <i class="bi bi-send-check-fill success-icon"></i>
+          <h3>¡Preparando Mensaje!</h3>
+          <p>{{ mensajeExito }}</p>
+          <p style="font-size: 0.8rem; color: #888; margin-top: 20px;">Si no fuiste redirigido, verifica si tu navegador bloqueó las ventanas emergentes.</p>
+        </div>
+
+        <!-- Formulario (Mismo HTML) -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!showSuccess" class="fade-in">
+          
+          <div class="form-header">
+            <h3>Enviar Mensaje</h3>
+            <span class="required-badge">Todos los campos requeridos</span>
+          </div>
+
+          <div class="form-group">
+            <label>NOMBRE COMPLETO</label>
+            <input type="text" formControlName="nombre" placeholder="Ej. Juan Pérez">
+            <span class="error-msg" *ngIf="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
+              Por favor, ingresa un nombre válido (solo letras).
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label>{{ metodoContacto === 'email' ? 'SU CORREO DE CONTACTO' : 'SU NÚMERO DE TELÉFONO' }}</label>
+            <input 
+              [type]="metodoContacto === 'email' ? 'email' : 'tel'" 
+              formControlName="contactoDestino" 
+              [placeholder]="metodoContacto === 'email' ? 'tucorreo@ejemplo.com' : 'Ej. 987654321'"
+              [maxlength]="metodoContacto === 'phone' ? 9 : 100">
+            <span class="error-msg" *ngIf="contactForm.get('contactoDestino')?.invalid && contactForm.get('contactoDestino')?.touched">
+              {{ metodoContacto === 'email' ? 'Ingresa un correo electrónico válido.' : 'Ingresa un número válido de hasta 9 dígitos.' }}
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label>TIPO DE CONSULTA</label>
+            <select formControlName="tipoConsulta">
+              <option value="" disabled selected>Seleccione una opción</option>
+              <option value="Desarrollo Web Full Stack">Desarrollo Web Full Stack</option>
+              <option value="Diseño de Base de Datos">Diseño de Base de Datos</option>
+              <option value="Infraestructura de Redes">Infraestructura de Redes</option>
+              <option value="Oportunidad Laboral">Oportunidad Laboral</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label>MENSAJE</label>
+              <span class="word-counter" [class.limit-reached]="currentWordCount > 800">
+                {{ currentWordCount }} / 800 palabras
+              </span>
+            </div>
+            <textarea formControlName="mensaje" rows="5" placeholder="Cuéntame sobre tu proyecto o necesidad..."></textarea>
+            <span class="error-msg" *ngIf="contactForm.get('mensaje')?.hasError('maxWords') && contactForm.get('mensaje')?.touched">
+              Has superado el límite de 800 palabras.
+            </span>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="contactForm.invalid || isSubmitting">
+            <span *ngIf="!isSubmitting">ENVIAR MENSAJE <i class="bi bi-send-fill ms-2"></i></span>
+            <span *ngIf="isSubmitting" class="spinner"></span>
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</section>

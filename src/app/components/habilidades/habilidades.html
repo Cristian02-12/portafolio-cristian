@@ -1,1 +1,49 @@
-<p>habilidades works!</p>
+<section id="habilidades" class="habilidades-section">
+  <div class="habilidades-container">
+    
+    <!-- PARTE IZQUIERDA (40%) -->
+    <div class="habilidades-left">
+      <h4 class="habilidades-label">HABILIDADES & STACK</h4>
+      
+      <h2 class="habilidades-title">
+        Las herramientas correctas para <span class="highlight">cada solución.</span>
+      </h2>
+      
+      <p class="habilidades-desc">
+        Mi enfoque va más allá de escribir código. Gracias a mi formación integral, combino el desarrollo de software moderno con bases sólidas en redes y arquitectura de datos.
+      </p>
+
+      <!-- Botones de Filtrado -->
+      <div class="filtros-container">
+        <button 
+          *ngFor="let cat of categorias" 
+          class="filtro-btn"
+          [class.active]="categoriaActiva === cat"
+          (click)="seleccionarCategoria(cat)">
+          {{ cat }}
+        </button>
+      </div>
+    </div>
+
+    <!-- PARTE DERECHA (60%) -->
+    <div class="habilidades-right">
+      <div class="habilidades-grid">
+        
+        <!-- Tarjeta de Habilidad Iterada -->
+        <div class="habilidad-card fade-in" *ngFor="let hab of habilidadesFiltradas">
+          
+          <!-- Renderiza imagen SVG de Devicon si existe -->
+          <img *ngIf="hab.img" [src]="hab.img" [alt]="hab.nombre" class="habilidad-img">
+          
+          <!-- Renderiza icono de Bootstrap si no hay imagen -->
+          <i *ngIf="hab.icon" [class]="hab.icon" class="habilidad-icon"></i>
+          
+          <span class="habilidad-nombre">{{ hab.nombre }}</span>
+          
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
