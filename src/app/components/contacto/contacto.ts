@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contacto',
@@ -11,8 +12,13 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractContro
 })
 export class Contacto implements OnInit {
 
-  miCorreo = 'cristianelinsonolanorodriquez@gmail.com';
+  // TUS DATOS REALES EXTRAÍDOS DEL CV
   miWhatsapp = '51960587536'; // Código de país 51 (Perú) + número
+
+  // CREDENCIALES DE EMAILJS (Reemplázalas con las tuyas)
+  private readonly EMAILJS_SERVICE_ID = 'service_pyzw7sd';
+  private readonly EMAILJS_TEMPLATE_ID = 'template_jm8hc1m';
+  private readonly EMAILJS_PUBLIC_KEY = 'dkpK83GGAHYwzgw24';
 
   contactForm!: FormGroup;
   metodoContacto: 'email' | 'phone' = 'email';
@@ -60,48 +66,63 @@ export class Contacto implements OnInit {
     destControl?.setValue('');
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.contactForm.valid) {
       this.isSubmitting = true;
       const formData = this.contactForm.value;
 
-      // 1. Construir el mensaje base que vas a recibir
-      const saludo = `Hola Cristian, mi nombre es ${formData.nombre}.`;
-      const contactoUser = `Mi contacto es: ${formData.contactoDestino}.`;
-      const motivo = `Te escribo por el siguiente motivo: ${formData.tipoConsulta}.`;
-      const mensajeCuerpo = `Detalle del mensaje: ${formData.mensaje}`;
-
-      // 2. Redirección dependiendo del método seleccionado
-      setTimeout(() => {
-        this.isSubmitting = false;
+      if (this.metodoContacto === 'phone') {
+        // --- ENVÍO POR WHATSAPP ---
+        const saludo = `Hola Cristian, mi nombre es ${formData.nombre}.`;
+        const contactoUser = `Mi número es: ${formData.contactoDestino}.`;
+        const motivo = `Te escribo por el siguiente motivo: ${formData.tipoConsulta}.`;
+        const mensajeCuerpo = `Detalle del mensaje: ${formData.mensaje}`;
         
-        if (this.metodoContacto === 'phone') {
-          // Generar enlace a WhatsApp
-          const textoWhatsapp = `${saludo}\n${contactoUser}\n\n${motivo}\n\n${mensajeCuerpo}`;
-          const urlWhatsapp = `https://wa.me/${this.miWhatsapp}?text=${encodeURIComponent(textoWhatsapp)}`;
-          window.open(urlWhatsapp, '_blank'); // Abre en nueva pestaña
-          
-          this.mensajeExito = 'Redirigiendo a WhatsApp de manera segura...';
-        } else {
-          // Generar enlace a Correo (mailto)
-          const asunto = `Nueva Consulta de Portafolio: ${formData.tipoConsulta}`;
-          const textoCorreo = `${saludo}\n${contactoUser}\n\n${motivo}\n\n${mensajeCuerpo}`;
-          const urlCorreo = `mailto:${this.miCorreo}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(textoCorreo)}`;
-          window.location.href = urlCorreo; // Abre el gestor de correo predeterminado
-          
-          this.mensajeExito = 'Abriendo tu gestor de correo electrónico...';
-        }
-
-        // Mostrar UI de éxito
-        this.showSuccess = true;
+        const textoWhatsapp = `${saludo}\n${contactoUser}\n\n${motivo}\n\n${mensajeCuerpo}`;
+        const urlWhatsapp = `https://wa.me/${this.miWhatsapp}?text=${encodeURIComponent(textoWhatsapp)}`;
         
-        // Resetear formulario después de unos segundos
         setTimeout(() => {
-          this.showSuccess = false;
-          this.contactForm.reset();
-        }, 6000);
+          this.isSubmitting = false;
+          window.open(urlWhatsapp, '_blank');
+          this.mostrarMensajeExito('Redirigiendo a WhatsApp de manera segura...');
+        }, 1000);
 
-      }, 1000); // Pequeña espera para animación del botón
+      } else {
+        // --- ENVÍO POR CORREO (USANDO EMAILJS) ---
+        try {
+          // El objeto templateParams debe coincidir con las variables en tu plantilla de EmailJS
+          const templateParams = {
+            nombre: formData.nombre,
+            contactoDestino: formData.contactoDestino,
+            tipoConsulta: formData.tipoConsulta,
+            mensaje: formData.mensaje
+          };
+
+          await emailjs.send(
+            this.EMAILJS_SERVICE_ID,
+            this.EMAILJS_TEMPLATE_ID,
+            templateParams,
+            this.EMAILJS_PUBLIC_KEY
+          );
+
+          this.isSubmitting = false;
+          this.mostrarMensajeExito('El mensaje ha sido enviado directamente a tu correo.');
+
+        } catch (error) {
+          console.error('Error enviando correo:', error);
+          this.isSubmitting = false;
+          alert('Hubo un error enviando el mensaje. Por favor, intenta de nuevo más tarde o usa la opción de WhatsApp.');
+        }
+      }
     }
+  }
+
+  private mostrarMensajeExito(mensaje: string) {
+    this.mensajeExito = mensaje;
+    this.showSuccess = true;
+    setTimeout(() => {
+      this.showSuccess = false;
+      this.contactForm.reset();
+    }, 6000);
   }
 }

@@ -1,7 +1,19 @@
 .footer-section {
+  position: relative;
   background-color: #000000;
-  border-top: 1px solid #FFFFFF; /* Línea de separación solicitada */
   padding: 30px 5%;
+}
+
+.footer-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1300px;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
 }
 
 .footer-container {
