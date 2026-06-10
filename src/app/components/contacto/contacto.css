@@ -335,4 +335,11 @@
   .form-container {
     padding: 25px 20px;
   }
+  .option-card {
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  .option-icon {
+    font-size: 1.5rem;
+  }
 }

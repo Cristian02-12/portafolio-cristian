@@ -75,6 +75,11 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .footer-section::before {
+    width: 100%;
+    max-width: 300px;
+  }
+
   .footer-container {
     flex-direction: column;
     text-align: center;
