@@ -1,59 +1,88 @@
-# PortfolioCristian
+🚀 Cristian Olano | Portafolio Web Profesional
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
+"Desarrollador enfocado en soluciones. No solo escribo código: diseño sistemas que optimizan procesos reales."
 
-## Development server
+Bienvenido al repositorio de mi portafolio personal. Este proyecto ha sido diseñado en Figma y desarrollado completamente desde cero utilizando Angular 18+ (con arquitectura Standalone Components), enfocado en el rendimiento, la escalabilidad y una experiencia de usuario (UX) inmersiva en Dark Mode.
 
-To start a local development server, run:
+👨‍💻 Sobre Mí
+
+Soy estudiante de 8° ciclo de Ingeniería de Sistemas e Informática con una visión clara: la tecnología debe servir para resolver problemas del mundo real. Combino el desarrollo de software moderno con bases sólidas en redes e infraestructura de datos.
+
+Stack Principal: Angular, Node.js, Spring Boot, Java, JavaScript, PostgreSQL, SQL Server.
+
+Infraestructura: Certificación CCNA (Cisco Networking Academy).
+
+✨ Características del Portafolio
+
+Diseño UI/UX Premium: Interfaz minimalista con estética Dark Mode, acentos en color verde tecnológico (#37D87C) y efectos de "Glassmorphism" y brillos radiales que reaccionan al cursor.
+
+Componentes Dinámicos: * Header con Scroll Spy y menú hamburguesa para dispositivos móviles.
+
+Línea de tiempo interactiva para la trayectoria.
+
+Grid estilo Masonry/Bento Box para los proyectos.
+
+Contacto Automatizado: Implementación de Reactive Forms con validaciones complejas de Angular. Integración con EmailJS para el envío de correos sin necesidad de backend, y redirección inteligente a la API de WhatsApp.
+
+Totalmente Responsivo: Adaptable a cualquier dispositivo (Mobile, Tablet, Desktop) mediante CSS Grid, Flexbox y utilidades de Bootstrap.
+
+🛠️ Tecnologías y Librerías Utilizadas
+
+Framework: Angular (Standalone Components, Reactive Forms)
+
+Estilos: CSS3 puro, Bootstrap 5.3
+
+Iconografía: Bootstrap Icons, DevIcons
+
+Servicios Externos: EmailJS Browser API
+
+⚙️ Instalación y Despliegue Local
+
+Si deseas clonar este proyecto para visualizar el código o ejecutarlo en tu entorno local, sigue estos pasos:
+
+1. Clonar el repositorio
+
+```bash
+git clone [https://github.com/Cristian02-12/portafolio-cristian.git](https://github.com/Cristian02-12/portafolio-cristian.git)
+cd portafolio-cristian
+```
+
+2. Instalar dependencias
+
+Asegúrate de tener Node.js instalado.
+
+```bash
+npm install
+```
+
+3. Servidor de Desarrollo
+
+Para iniciar el servidor local, ejecuta:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abre tu navegador y navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si realizas cambios en los archivos fuente.
 
-## Code scaffolding
+4. Compilación para Producción (Build)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Para generar los archivos optimizados listos para desplegar (en GitHub Pages, Vercel, Netlify o Firebase):
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Los artefactos se almacenarán en el directorio `dist/`.
 
-## Running unit tests
+📬 Contacto
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+¿Tienes algún proyecto en mente o una oportunidad laboral? ¡Hablemos!
 
-```bash
-ng test
-```
+Email: cristianelinsonolanorodriquez@gmail.com
 
-## Running end-to-end tests
+WhatsApp: +51 960 587 536
 
-For end-to-end (e2e) testing, run:
+LinkedIn: https://www.linkedin.com/in/cristian-elinson-olano-rodriguez-95b630329/
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Diseñado en Figma y Desarrollado con ❤️ usando Angular por Cristian Olano.
