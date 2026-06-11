@@ -80,9 +80,20 @@
     max-width: 300px;
   }
 
+  .footer-section {
+    margin-bottom: 50px;
+  }
+
   .footer-container {
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    padding-bottom: 30px;
+  }
+
+  .footer-right {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
   }
 }

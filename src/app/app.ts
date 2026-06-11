@@ -13,7 +13,7 @@ import { Footer } from "./components/footer/footer";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, Header, Home, AcercaDe, Servicios, Habilidades, Proyectos, Contacto, Footer],
+  imports: [CommonModule, Header, Home, AcercaDe, Servicios, Habilidades, Proyectos, Contacto, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
