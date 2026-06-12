@@ -1,0 +1,90 @@
+<div class="detalle-container fade-in" *ngIf="proyecto">
+  
+  <!-- BARRA SUPERIOR: Botón Volver y Año -->
+  <div class="detalle-header">
+    <button class="btn-volver" (click)="cerrar()">
+      <i class="bi bi-arrow-left"></i>
+      <span>Volver a Proyectos</span>
+    </button>
+    <span class="detalle-year"><i class="bi bi-calendar3"></i> {{ proyecto.year }}</span>
+  </div>
+
+  <!-- HERO: Imagen principal y Títulos -->
+  <div class="detalle-hero">
+    <div class="hero-img-wrapper">
+      <img [src]="proyecto.img" [alt]="proyecto.titulo" class="hero-img">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h4 class="detalle-subtitle">{{ proyecto.subtitulo }}</h4>
+      <h2 class="detalle-title">{{ proyecto.titulo }}</h2>
+    </div>
+  </div>
+
+  <!-- CUERPO DEL DETALLE (Grid 2 columnas) -->
+  <div class="detalle-body">
+    
+    <!-- Lado Izquierdo: Explicaciones (Reto, Solución, Características) -->
+    <div class="detalle-left">
+      
+      <div class="info-bloque">
+        <h3><i class="bi bi-bullseye highlight-icon"></i> El Reto</h3>
+        <p>{{ proyecto.detalles.reto }}</p>
+      </div>
+
+      <div class="info-bloque">
+        <h3><i class="bi bi-lightbulb-fill highlight-icon"></i> La Solución</h3>
+        <p>{{ proyecto.detalles.solucion }}</p>
+      </div>
+
+      <div class="info-bloque">
+        <h3><i class="bi bi-stars highlight-icon"></i> Características Clave</h3>
+        <ul class="features-list">
+          <li *ngFor="let feature of proyecto.detalles.caracteristicas">
+            <i class="bi bi-check-circle-fill text-accent"></i>
+            <span>{{ feature }}</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Lado Derecho: Rol, Tecnologías y Enlaces -->
+    <div class="detalle-right">
+      
+      <!-- Tarjeta de Información Técnica -->
+      <div class="tech-card">
+        
+        <div class="tech-section">
+          <h4>Mi Rol</h4>
+          <p class="rol-text"><i class="bi bi-person-badge"></i> {{ proyecto.detalles.rol }}</p>
+        </div>
+
+        <hr class="tech-divider">
+
+        <div class="tech-section">
+          <h4>Stack Tecnológico</h4>
+          <div class="tags-container">
+            <span class="tech-tag" *ngFor="let tech of proyecto.tech">{{ tech }}</span>
+          </div>
+        </div>
+
+        <hr class="tech-divider">
+
+        <div class="tech-section">
+          <h4>Enlaces del Proyecto</h4>
+          <div class="links-container">
+            <a *ngIf="proyecto.detalles.enlaces.github" [href]="proyecto.detalles.enlaces.github" target="_blank" class="action-btn outline">
+              <i class="bi bi-github"></i> Ver Código
+            </a>
+            <a *ngIf="proyecto.detalles.enlaces.demo" [href]="proyecto.detalles.enlaces.demo" target="_blank" class="action-btn filled">
+              <i class="bi bi-box-arrow-up-right"></i> Visitar Proyecto
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

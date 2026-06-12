@@ -2,7 +2,7 @@
   <div class="proyectos-container">
     
     <!-- Encabezado de la Sección -->
-    <div class="proyectos-header">
+    <div class="proyectos-header" *ngIf="!proyectoSeleccionado">
       <h4 class="proyectos-label">PROYECTOS DESTACADOS</h4>
       <h2 class="proyectos-title">
         Cada línea de código <span class="highlight">resuelve un problema real.</span>
@@ -10,12 +10,12 @@
     </div>
 
     <!-- Contenedor con Scroll Interno -->
-    <div class="proyectos-scroll-area">
+    <div class="proyectos-scroll-area" *ngIf="!proyectoSeleccionado">
       <div class="proyectos-grid">
         
         <!-- Tarjeta del Proyecto -->
         <!-- Aplicamos la clase dinámica para variar los tamaños -->
-        <div class="proyecto-card" *ngFor="let p of proyectos" [ngClass]="p.sizeClass">
+        <div class="proyecto-card" *ngFor="let p of proyectos" [ngClass]="p.sizeClass" (click)="verDetalle(p)">
           
           <!-- Imagen de Previsualización -->
           <div class="card-img-wrapper">
@@ -58,5 +58,13 @@
       </div>
     </div>
 
+     <!-- ÁREA 2: EL DETALLE DEL PROYECTO (Se muestra si hay un proyecto seleccionado) -->
+    <div class="proyecto-detalle-wrapper" *ngIf="proyectoSeleccionado">
+      <app-proyecto-detalle 
+        [proyecto]="proyectoSeleccionado" 
+        (volver)="cerrarDetalle()">
+      </app-proyecto-detalle>
+    </div>
+    
   </div>
 </section>
